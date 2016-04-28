@@ -17,7 +17,9 @@
         </activity>
         <activity android:name=".PollosCopacabanaActivity" />
         <activity android:name=".PizzaNostraActivity" />
-        <activity android:name=".TobyActivity"></activity>
+        <activity android:name=".TobyActivity" />
+        <activity android:name=".OrdenActivity" />
+        <activity android:name=".ConfirmacionActivity"></activity>
     </application>
 
 </manifest>
