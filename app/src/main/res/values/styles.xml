@@ -8,4 +8,80 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Estilos de Texto -->
+
+    <!-- Titulo  -->
+    <style name="Titulo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#311B92</item>
+    </style>
+
+    <!-- Titulo 1  -->
+    <style name="Titulo1" parent="Titulo">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <!-- Titulo 2  -->
+
+    <!-- Subtitulo 1  -->
+    <style name="SubTitulo1" parent="Titulo">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Subtitulo 2  -->
+    <style name="SubTitulo2" parent="Titulo">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <!-- Contenido -->
+    <style name="Contenido">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <!-- Contenido centro-->
+    <style name="ContenidoCentro" parent="Contenido">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+
+    <!-- Estilo CardView base -->
+    <style name="Card" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="cardElevation">6dp</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
+
+    <!-- Estilo CardView 1 -->
+    <style name="Card1" parent="Card">
+        <item name="android:layout_height">200dp</item>
+    </style>
+
+    <!-- Estilo CardView 1 -->
+    <style name="Card2" parent="Card">
+        <item name="android:layout_height">190dp</item>
+    </style>
+
+    <!-- Estilos Imagenes -->
+    <style name="Imagenes">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+
+    <!-- Estilos Layout -->
+
+
 </resources>

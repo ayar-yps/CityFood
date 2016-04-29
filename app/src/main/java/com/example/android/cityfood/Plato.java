@@ -14,13 +14,14 @@ public class Plato {
     /**
      * Constructor de plato vacio
      */
-    public Plato(){
+    public Plato() {
         this.mNombre = "";
         this.mPrecioUnit = 0;
     }
 
     /**
      * Constructor de plato
+     *
      * @param nombre
      * @param precioUnit
      * @param textoPrecio
@@ -34,40 +35,21 @@ public class Plato {
     /**
      * Getters
      */
-    public String getmNombre() {
-        return mNombre;
-    }
-
     public double getmPrecioUnit() {
         return mPrecioUnit;
     }
 
-    public TextView getmTextoPrecio() {
-        return mTextoPrecio;
-    }
-
     /**
-     * Setters
-     */
-    public void setmNombre(String mNombre) {
-        this.mNombre = mNombre;
-    }
-
-    public void setmPrecioUnit(double mPrecioUnit) {
-        this.mPrecioUnit = mPrecioUnit;
-    }
-
-    public void setmTextoPrecio(TextView mTextoPrecio) {
-        this.mTextoPrecio = mTextoPrecio;
-    }
-
-    /**
-     * Ver precio del plato en card
+     * Ver precio del plato en TextView
      */
     public void verPrecio() {
         mTextoPrecio.setText("Bs " + mPrecioUnit);
     }
 
+    /**
+     * Genera el detalle del plato
+     * @return
+     */
     public String generarDetallePlato() {
 
         String detallePlato = mNombre;

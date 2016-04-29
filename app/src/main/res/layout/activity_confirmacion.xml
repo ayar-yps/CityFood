@@ -21,17 +21,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
+                style="@style/Titulo1"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:text="Confirmación de pedido"
-                android:textAllCaps="true" />
+                android:padding="8dp"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="datos factura"
-                android:textAllCaps="true" />
+                style="@style/Titulo"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingTop="8dp"
+                android:text="datos factura" />
 
             <EditText
                 android:id="@+id/nombre_factura"
@@ -48,10 +48,10 @@
                 android:inputType="number" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="datos entrega"
-                android:textAllCaps="true" />
+                style="@style/Titulo"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingTop="8dp"
+                android:text="datos entrega" />
 
             <EditText
                 android:id="@+id/telefono"
@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_custom"
-            android:onClick="enviarOrden"
+            android:onClick="enviarPedido"
             android:text="hecho!"
             android:textColor="#f9f6f6" />
 

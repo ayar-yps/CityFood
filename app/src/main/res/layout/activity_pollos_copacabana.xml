@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,11 +18,7 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardUseCompatPadding="true">
+                style="@style/Card2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -40,24 +35,20 @@
                         android:paddingTop="8dp">
 
                         <TextView
+                            style="@style/SubTitulo1"
+                            android:fontFamily="sans-serif"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
                             android:layout_weight="7"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Combo Antojito"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:text="Combo Antojito"/>
 
                         <TextView
                             android:id="@+id/precio_combo_antojito"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
+                            style="@style/SubTitulo1"
                             android:fontFamily="sans-serif"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
                             android:gravity="center"
-                            android:text="0"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:text="Bs 14"/>
 
                     </LinearLayout>
 
@@ -72,11 +63,9 @@
                         android:paddingTop="4dp">
 
                         <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            style="@style/Imagenes"
                             android:layout_weight="2"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/pollos_copacabana_blanco" />
+                            android:src="@drawable/pc_antojito" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -92,7 +81,6 @@
                                 >
 
                                 <RadioButton
-                                    android:id="@+id/opcion_1a"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Combo"
@@ -101,7 +89,6 @@
                                     android:onClick="cambiarTipoPlato"/>
 
                                 <RadioButton
-                                    android:id="@+id/opcion_2a"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Solo pollo y papas"
@@ -110,7 +97,6 @@
                                     android:onClick="cambiarTipoPlato" />
 
                                 <RadioButton
-                                    android:id="@+id/opcion_3a"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Solo pollo"
@@ -121,7 +107,7 @@
                             </RadioGroup>
 
                             <CheckBox
-                                android:id="@+id/agrandar_combo_a"
+                                android:id="@+id/agrandar_antojito"
                                 android:tag="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -138,7 +124,6 @@
                             android:orientation="vertical">
 
                             <Button
-                                android:id="@+id/mas_a"
                                 android:tag="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
@@ -147,7 +132,6 @@
                                 android:onClick="incluirPlato"/>
 
                             <Button
-                                android:id="@+id/menos_a"
                                 android:tag="0"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
@@ -162,14 +146,8 @@
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
-
             <android.support.v7.widget.CardView
-                android:id="@+id/combo_fiesta"
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardUseCompatPadding="true">
+                style="@style/Card2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -186,23 +164,20 @@
                         android:paddingTop="8dp">
 
                         <TextView
+                            style="@style/SubTitulo1"
+                            android:fontFamily="sans-serif"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
                             android:layout_weight="7"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Combo Fiesta"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:text="Combo Fiesta"/>
 
                         <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:id="@+id/precio_combo_fiesta"
+                            style="@style/SubTitulo1"
                             android:fontFamily="sans-serif"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
                             android:gravity="center"
-                            android:text="0"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:text="Bs 14"/>
 
                     </LinearLayout>
 
@@ -217,11 +192,9 @@
                         android:paddingTop="4dp">
 
                         <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            style="@style/Imagenes"
                             android:layout_weight="2"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/pollos_copacabana_blanco" />
+                            android:src="@drawable/pc_fiesta" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -234,30 +207,42 @@
                                 android:id="@+id/opciones_fiesta"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checkedButton="@+id/combo">
-
-                                <RadioButton
-                                    android:id="@+id/opcion_1f"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Combo" />
+                                >
 
                                 <RadioButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Solo pollo y papas" />
+                                    android:text="Combo"
+                                    android:tag="1,0"
+                                    android:saveEnabled="false"
+                                    android:onClick="cambiarTipoPlato"/>
 
                                 <RadioButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Solo pollo" />
+                                    android:text="Solo pollo y papas"
+                                    android:tag="1,1"
+                                    android:saveEnabled="false"
+                                    android:onClick="cambiarTipoPlato" />
+
+                                <RadioButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Solo pollo"
+                                    android:tag="1,2"
+                                    android:saveEnabled="false"
+                                    android:onClick="cambiarTipoPlato"/>
 
                             </RadioGroup>
 
                             <CheckBox
+                                android:id="@+id/agrandar_fiesta"
+                                android:tag="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Agrandar combo" />
+                                android:text="Agrandar combo"
+                                android:saveEnabled="false"
+                                android:onClick="cambiarTamañoCombo"/>
 
                         </LinearLayout>
 
@@ -268,16 +253,20 @@
                             android:orientation="vertical">
 
                             <Button
+                                android:tag="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:text="+" />
+                                android:text="+"
+                                android:onClick="incluirPlato"/>
 
                             <Button
+                                android:tag="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:text="-" />
+                                android:text="-"
+                                android:onClick="quitarPlato"/>
 
                         </LinearLayout>
 
@@ -286,15 +275,8 @@
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
-
             <android.support.v7.widget.CardView
-                android:id="@+id/combo_trio"
-                android:layout_width="fill_parent"
-                android:layout_height="190dp"
-                android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardUseCompatPadding="true">
+                style="@style/Card2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -311,26 +293,22 @@
                         android:paddingTop="8dp">
 
                         <TextView
+                            style="@style/SubTitulo1"
+                            android:fontFamily="sans-serif"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
                             android:layout_weight="7"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="Combo Trio"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:text="Combo Trio"/>
 
                         <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:id="@+id/precio_combo_trio"
+                            style="@style/SubTitulo1"
                             android:fontFamily="sans-serif"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
                             android:gravity="center"
-                            android:text="0"
-                            android:textSize="16dp"
-                            android:textStyle="bold" />
+                            android:text="Bs 14"/>
 
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -343,11 +321,9 @@
                         android:paddingTop="4dp">
 
                         <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            style="@style/Imagenes"
                             android:layout_weight="2"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/pollos_copacabana_blanco" />
+                            android:src="@drawable/pc_trio" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -357,32 +333,45 @@
                             android:padding="1dp">
 
                             <RadioGroup
+                                android:id="@+id/opciones_trio"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checkedButton="@+id/combo">
-
-                                <RadioButton
-                                    android:id="@+id/combo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Combo" />
+                                >
 
                                 <RadioButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Solo pollo y papas" />
+                                    android:text="Combo"
+                                    android:tag="2,0"
+                                    android:saveEnabled="false"
+                                    android:onClick="cambiarTipoPlato"/>
 
                                 <RadioButton
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Solo pollo" />
+                                    android:text="Solo pollo y papas"
+                                    android:tag="2,1"
+                                    android:saveEnabled="false"
+                                    android:onClick="cambiarTipoPlato" />
+
+                                <RadioButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Solo pollo"
+                                    android:tag="2,2"
+                                    android:saveEnabled="false"
+                                    android:onClick="cambiarTipoPlato"/>
 
                             </RadioGroup>
 
                             <CheckBox
+                                android:id="@+id/agrandar_trio"
+                                android:tag="2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Agrandar combo" />
+                                android:text="Agrandar combo"
+                                android:saveEnabled="false"
+                                android:onClick="cambiarTamañoCombo"/>
 
                         </LinearLayout>
 
@@ -393,16 +382,20 @@
                             android:orientation="vertical">
 
                             <Button
+                                android:tag="2"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:text="+" />
+                                android:text="+"
+                                android:onClick="incluirPlato"/>
 
                             <Button
+                                android:tag="2"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
-                                android:text="-" />
+                                android:text="-"
+                                android:onClick="quitarPlato"/>
 
                         </LinearLayout>
 
@@ -435,7 +428,7 @@
                 android:layout_weight="2"
                 android:gravity="center_vertical"
                 android:paddingLeft="16dp"
-                android:text="Total orden: "
+                android:text="Total pedido: "
                 android:textColor="#f9f6f6"
                 android:textSize="24dp" />
 
@@ -459,7 +452,7 @@
             android:background="@drawable/button_custom"
             android:text="Ver pedido"
             android:textColor="#f9f6f6"
-            android:onClick="verOrden"/>
+            android:onClick="verPedido"/>
 
     </LinearLayout>
 

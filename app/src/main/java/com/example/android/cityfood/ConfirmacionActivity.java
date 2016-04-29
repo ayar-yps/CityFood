@@ -12,22 +12,32 @@ import java.util.Random;
 
 public class ConfirmacionActivity extends AppCompatActivity {
 
-    String[] mResumenPedido;
+    private String[] mDetallePedido;
 
+    /**
+     * Crea ConfirmacionActivity y capta el detalle del pedido
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmacion);
 
-        mResumenPedido = getIntent().getStringArrayExtra("ResumenOrden");
+        mDetallePedido = getIntent().getStringArrayExtra("DetallePedido");
 
     }
 
-    public String generarOrden() {
+    /**
+     * Genera el resumen del pedido
+     *
+     * @return
+     */
+    public String generarResumenPedido() {
 
-        String resumenOrden = "";
+        String resumenPedido = "";
 
-        resumenOrden = resumenOrden
+        resumenPedido = resumenPedido
                 + "----------------------------------------------------------------\n"
                 + "DATOS FACTURA\n"
                 + "----------------------------------------------------------------\n"
@@ -45,23 +55,28 @@ public class ConfirmacionActivity extends AppCompatActivity {
                 + "PEDIDO\n"
                 + "----------------------------------------------------------------\n";
 
-        String[] items = mResumenPedido[0].split("\\n");
-        String[] cantidades = mResumenPedido[1].split("\\n");
+        String[] items = mDetallePedido[0].split("\\n");
+        String[] cantidades = mDetallePedido[1].split("\\n");
 
         for (int i = 0; i < items.length; i++) {
-            resumenOrden += "- " + cantidades[i] + " " + items[i] + "\n";
+            resumenPedido += "- " + cantidades[i] + " " + items[i] + "\n";
         }
-        resumenOrden = resumenOrden
+        resumenPedido = resumenPedido
                 + "----------------------------------------------------------------\n"
-                + "Total a pagar: " + "Bs " + mResumenPedido[4] + "\n"
+                + "Total a pagar: " + "Bs " + mDetallePedido[4] + "\n"
                 + "----------------------------------------------------------------\n";
 
-        return resumenOrden;
+        return resumenPedido;
     }
 
-    public void enviarOrden(View v) {
+    /**
+     * Envia el resumen del pedido por email
+     *
+     * @param v
+     */
+    public void enviarPedido(View v) {
 
-        Log.i("Orden", generarOrden());
+        Log.i("Pedido", generarResumenPedido());
 
         Random rand = new Random();
         int codPedido = rand.nextInt(999) + 100;
@@ -70,13 +85,12 @@ public class ConfirmacionActivity extends AppCompatActivity {
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ayar.yps@gmail.com"});
         intent.putExtra(Intent.EXTRA_SUBJECT, "Pedido " + String.valueOf(codPedido));
-        intent.putExtra(Intent.EXTRA_TEXT, generarOrden());
+        intent.putExtra(Intent.EXTRA_TEXT, generarResumenPedido());
 
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
 
     }
-
 
 }

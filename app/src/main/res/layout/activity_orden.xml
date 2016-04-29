@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.android.cityfood.OrdenActivity">
+    tools:context=".PedidoActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,44 +21,52 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/Titulo1"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Resumen pedido"
-                android:textAllCaps="true"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                android:paddingBottom="8dp"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#46329c" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="8dp">
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
+                    style="@style/Titulo"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:text="Platos"
-                    android:textAllCaps="true" />
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Platos" />
 
                 <TextView
+                    style="@style/Titulo"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
                     android:gravity="center"
-                    android:text="cant."
-                    android:textAllCaps="true" />
+                    android:text="cant." />
 
                 <TextView
+                    style="@style/Titulo"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center|right"
                     android:text="Bs"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="false" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#46329c" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text=""/>
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/detalle_precios"
@@ -88,47 +96,50 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center|right"
-                    android:text=""/>
+                    android:text="" />
 
             </LinearLayout>
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="#000000" />
+                android:background="#46329c" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="8dp">
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
+                    style="@style/Titulo"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:text="Total"
-                    android:textAllCaps="true" />
+                    android:text="Total" />
 
                 <TextView
                     android:id="@+id/cant_total"
+                    style="@style/Titulo"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="0"
-                    android:textAllCaps="true" />
+                    android:text="0" />
 
                 <TextView
                     android:id="@+id/precio_total"
+                    style="@style/Titulo"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center|right"
-                    android:text="0"
-                    android:textAllCaps="true" />
+                    android:text="0" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#46329c" />
 
         </LinearLayout>
 
@@ -146,9 +157,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_custom"
+            android:onClick="confirmarPedido"
             android:text="confirmar pedido"
-            android:textColor="#f9f6f6"
-            android:onClick="confirmarOrden"/>
+            android:textColor="#f9f6f6" />
 
     </LinearLayout>
 

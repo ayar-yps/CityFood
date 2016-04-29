@@ -2,8 +2,8 @@ package com.example.android.cityfood;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -11,16 +11,22 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PollosCopacabanaActivity extends FragmentActivity {
+public class PollosCopacabanaActivity extends AppCompatActivity {
+
+    private Pedido mPedido = new Pedido();
+    private PedidoFragment mPedidoFragment;
+    private TextView mTextTotalPedido;
 
     private PlatoCopacabana[] mPlatos = new PlatoCopacabana[3];
-    private Orden mOrden = new Orden();
+
     private double[] preciosAntojito = new double[3];
-    private OrdenFragment mOrdenFragment;
-    private TextView mTextOrden;
+    private double[] preciosFiesta = new double[3];
+    private double[] preciosTrio = new double[3];
+
 
     /**
      * Crea PollosCopacabanaActivity
+     *
      * @param savedInstanceState
      */
     @Override
@@ -29,18 +35,18 @@ public class PollosCopacabanaActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pollos_copacabana);
 
-        //Define fragment manager y recupera mOrdenFragment
+        //Define fragment manager y recupera mPedidoFragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        mOrdenFragment = (OrdenFragment) fragmentManager.findFragmentByTag("orden");
+        mPedidoFragment = (PedidoFragment) fragmentManager.findFragmentByTag("pedido");
 
-        //Si no hay ningun mOrdenFragment con el tag "orden", lo crea
-        //si existe, se guarda su orden en mOrden
-        if (mOrdenFragment == null) {
-            mOrdenFragment = new OrdenFragment();
-            fragmentManager.beginTransaction().add(mOrdenFragment, "orden").commit();
-            mOrdenFragment.setOrden(mOrden);
-        }else{
-            mOrden= mOrdenFragment.getOrden();
+        //Si no hay ningun mPedidoFragment con el tag "pedido", lo crea
+        //si existe, se guarda su orden en mPedido
+        if (mPedidoFragment == null) {
+            mPedidoFragment = new PedidoFragment();
+            fragmentManager.beginTransaction().add(mPedidoFragment, "pedido").commit();
+            mPedidoFragment.setPedido(mPedido);
+        } else {
+            mPedido = mPedidoFragment.getPedido();
         }
 
         //Definir precios base de platos copacabana
@@ -48,31 +54,52 @@ public class PollosCopacabanaActivity extends FragmentActivity {
         preciosAntojito[1] = 16.5;
         preciosAntojito[2] = 13.5;
 
-        //Fefinicion de platos copacabana
+        preciosFiesta[0] = 27.0;
+        preciosFiesta[1] = 23.5;
+        preciosFiesta[2] = 20.0;
+
+        preciosTrio[0] = 38.5;
+        preciosTrio[1] = 33.0;
+        preciosTrio[2] = 29.0;
+
+        //Definicion de platos copacabana
         mPlatos[0] = new PlatoCopacabana("Antojito", 19.5,
                 (TextView) findViewById(R.id.precio_combo_antojito), "Combo Normal",
-                (CheckBox) findViewById(R.id.agrandar_combo_a),
+                (CheckBox) findViewById(R.id.agrandar_antojito),
                 preciosAntojito);
+        mPlatos[1] = new PlatoCopacabana("Fiesta", 27.0,
+                (TextView) findViewById(R.id.precio_combo_fiesta), "Combo Normal",
+                (CheckBox) findViewById(R.id.agrandar_fiesta),
+                preciosFiesta);
+        mPlatos[2] = new PlatoCopacabana("Trio", 38.5,
+                (TextView) findViewById(R.id.precio_combo_trio), "Combo Normal",
+                (CheckBox) findViewById(R.id.agrandar_trio),
+                preciosTrio);
 
         //Seleccionar el primer radio button de cada radio group
         RadioGroup rgAntojito = (RadioGroup) findViewById(R.id.opciones_antojito);
+        RadioGroup rgFiesta = (RadioGroup) findViewById(R.id.opciones_fiesta);
+        RadioGroup rgTrio = (RadioGroup) findViewById(R.id.opciones_trio);
+
         ((RadioButton) rgAntojito.getChildAt(0)).setChecked(true);
+        ((RadioButton) rgFiesta.getChildAt(0)).setChecked(true);
+        ((RadioButton) rgTrio.getChildAt(0)).setChecked(true);
 
         //Mostrar precios de platos en cards
-        mPlatos[0].verPrecio();
+        verPrecios();
 
-        //Definir texview para el total de la orden y mostrar su valor
-        mTextOrden = (TextView) findViewById(R.id.total_orden);
-        mOrden.verTotal(mTextOrden);
+        //Definir texview para el total del pedido y mostrar su valor
+        mTextTotalPedido = (TextView) findViewById(R.id.total_orden);
+        mPedido.verTotal(mTextTotalPedido);
     }
 
     /**
-     * Guarda orden en mOrdenFragment antes de destruir PollosCopacabanaActivity
+     * Guarda orden en mPedidoFragment antes de destruir PollosCopacabanaActivity
      */
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mOrdenFragment.setOrden(mOrden);
+        mPedidoFragment.setPedido(mPedido);
     }
 
     /**
@@ -104,9 +131,8 @@ public class PollosCopacabanaActivity extends FragmentActivity {
      */
     public void incluirPlato(View v) {
         int plato = Integer.parseInt(v.getTag().toString());
-        mOrden.incluirPlato(mPlatos[plato]);
-        mOrden.verTotal(mTextOrden);
-
+        mPedido.incluirPlato(mPlatos[plato]);
+        mPedido.verTotal(mTextTotalPedido);
     }
 
     /**
@@ -116,28 +142,37 @@ public class PollosCopacabanaActivity extends FragmentActivity {
      */
     public void quitarPlato(View v) {
         int plato = Integer.parseInt(v.getTag().toString());
-        double auxTotal=mOrden.getmPrecioTotal();
+        double auxTotal = mPedido.getmPrecioTotal();
 
-        mOrden.quitarPlato(mPlatos[plato]);
+        mPedido.quitarPlato(mPlatos[plato]);
 
-        if(auxTotal==mOrden.getmPrecioTotal()){
-            Toast.makeText(this,"Ese plato no esta en la orden",Toast.LENGTH_SHORT).show();
-        }else{
-            mOrden.verTotal(mTextOrden);
+        if (auxTotal == mPedido.getmPrecioTotal()) {
+            Toast.makeText(this, "Ese plato no esta en la orden", Toast.LENGTH_SHORT).show();
+        } else {
+            mPedido.verTotal(mTextTotalPedido);
         }
     }
 
     /**
-     * Abre OrdenActivity si la orden tiene items
+     * Ver precios de platos en activity
+     */
+    public void verPrecios() {
+        for (int i = 0; i < mPlatos.length; i++) {
+            mPlatos[i].verPrecio();
+        }
+    }
+
+    /**
+     * Abre PedidoActivity si el pedido tiene items
      *
      * @param v
      */
-    public void verOrden(View v) {
-        if (mOrden.getmNroItems()==0){
-            Toast.makeText(this,"Ups! La orden esta vacia.",Toast.LENGTH_SHORT).show();
-        }else{
-            Intent intent = new Intent(this, OrdenActivity.class);
-            intent.putExtra("ResumenOrden", mOrden.generaResumen());
+    public void verPedido(View v) {
+        if (mPedido.getmNroItems() == 0) {
+            Toast.makeText(this, "Ups! El pedido esta vacio.", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, PedidoActivity.class);
+            intent.putExtra("DetallePedido", mPedido.generarDetalle());
             startActivity(intent);
         }
     }

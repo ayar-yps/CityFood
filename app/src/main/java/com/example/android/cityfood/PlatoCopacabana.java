@@ -89,6 +89,10 @@ public class PlatoCopacabana extends Plato {
         this.verPrecio();
     }
 
+    /**
+     * Genera detalle del plato
+     * @return
+     */
     @Override
     public String generarDetallePlato() {
 
